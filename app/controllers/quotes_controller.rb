@@ -4,6 +4,15 @@ class QuotesController < ApplicationController
   before_action :set_quote, only: %i[show edit update destroy]
   # before_action { sleep 1 }
 
+  # NOTA:
+  # ¿Por qué los métodos create, update y destroy tienen dos 'format' adentro de un 'respond_to'?
+  # De esta manera, dichos métodos saben responder con acciones de Turbo y con respuestas HTML convencionales
+  # en caso de que Turbo esté desactivado.
+
+  # Esto se puede probar comentando la línea 1 del archivo "app/javascript/application.js" la cual importa Turbo Rails.
+  # Al estar comentada, nuestra app va a funcionar sin Turbo y estos métodos van a responder con el formato HTML.
+  # Todo sigue funcionando normalmente, con o sin Turbo :)
+
   def index
     @quotes = Quote.all.order(created_at: :desc)
   end
@@ -20,7 +29,7 @@ class QuotesController < ApplicationController
     if @quote.save
       respond_to do |format|
         format.html { redirect_to quotes_path, notice: 'Quote was successfully created.' }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = 'Quote was successfully created.' }
       end
     else
       render :new, status: :unprocessable_entity
@@ -31,7 +40,10 @@ class QuotesController < ApplicationController
 
   def update
     if @quote.update(quote_params)
-      redirect_to quotes_path, notice: 'Quote was successfully updated.'
+      respond_to do |format|
+        format.html { redirect_to quotes_path, notice: 'Quote was successfully updated.' }
+        format.turbo_stream { flash.now[:notice] = 'Quote was successfully updated.' }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -40,14 +52,22 @@ class QuotesController < ApplicationController
   def destroy
     @quote.destroy
 
-    # Este render es equivalente a crear un archivo llamado "views/quotes/destroy.turbo_stream.erb",
-    # cuyo contenido podría ser:
-    # <%= turbo_stream.remove @quote %>
-    # o bien:
-    # <turbo-stream action='remove' target='<%= dom_id(@quote) %>'> </turbo-stream>
-    render turbo_stream: [
-      turbo_stream.remove(@quote)
-    ]
+    respond_to do |format|
+      format.html { redirect_to quotes_path, notice: 'Quote was successfully destroyed.' }
+      format.turbo_stream { flash.now[:notice] = 'Quote was successfully destroyed.' }
+    end
+
+    # Una solución equivalente de este format.turbo_stream es:
+    # ELIMINAR el archivo "views/quotes/destroy.turbo_stream.erb"
+    # y reemplazar la linea 54 por el siguiente código:
+
+    # format.turbo_stream do
+    #   flash.now[:notice] = 'Quote was successfully destroyed.'
+    #   render turbo_stream: [
+    #     turbo_stream.remove(@quote),
+    #     turbo_stream.prepend('flash', partial: 'layouts/flash')
+    #   ]
+    # end
   end
 
   private

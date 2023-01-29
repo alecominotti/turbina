@@ -1,6 +1,7 @@
 // Config
 @import 'config/_reset';
 @import 'config/_variables';
+@import "config/animations";
 
 // Mixins
 @import 'mixins/_media';
@@ -12,6 +13,7 @@
 @import 'components/_visually_hidden';
 @import 'components/_error_message';
 @import "components/turbo_progress_bar";
+@import "components/flash";
 
 // Layouts
 @import "layouts/container";

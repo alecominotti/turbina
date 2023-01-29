@@ -1,0 +1,41 @@
+<%# Actualiza el contenido del turbo frame con id 'new_quote' %>
+<%# El contenido que le otorga es un string vacío, para ocultar el formulario de creacción de quote %>
+<%= turbo_stream.update Quote.new, '' %>
+
+<%# Agrega el partial app/views/quotes/_quote.html.erb al comienzo del turbo frame con id 'quotes' %>
+<%= turbo_stream.prepend 'quotes' do %>
+  <%= render @quote %>
+<% end %>
+
+
+<%# Estos dos turbo streams son equivalentes a las siguientes alternativas: %>
+
+<%# ALTERNATIVA 1 %>
+
+<%#= turbo_stream.update Quote.new, '' %>
+<%#= turbo_stream.prepend 'quotes', partial: 'quotes/quote', locals: { quote: @quote } %>
+
+<%# ----------------------------------------------------------------------------------------------------- %>
+
+<%# ALTERNATIVA 2 (la de mayor syntax sugar) %>
+
+<%#= turbo_stream.update Quote.new, "" %>
+<%#= turbo_stream.prepend "quotes", @quote %>
+
+<%# ----------------------------------------------------------------------------------------------------- %>
+
+<%# ALTERNATIVA 3 %>
+
+<!--
+<turbo-stream action='update' target='<%= dom_id(Quote.new) %>'>
+  <template></template>
+</turbo-stream>
+
+<turbo-stream action='prepend' target='quotes'>
+  <template>
+    <%= render @quote %>
+  </template>
+</turbo-stream>
+-->
+
+<%# ----------------------------------------------------------------------------------------------------- %>

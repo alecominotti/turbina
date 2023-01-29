@@ -1,8 +1,14 @@
 <main class='container'>
   <div class='header'>
     <h1>Quotes</h1>
-    <%= link_to 'New quote', new_quote_path, class: 'btn btn--primary' %>
+    <%# El atributo data-turbo-frame le está indicando a dónde insertar el formulario de new Quote %>
+    <%= link_to 'New quote', new_quote_path, data: { turbo_frame: dom_id(Quote.new) }, class: 'btn btn--primary' %>
   </div>
 
-  <%= render @quotes %>
+  <%# Dentro de este turbo frame se insertará el formulario para crear una nueva Quote %>
+  <%= turbo_frame_tag dom_id(Quote.new) %>
+
+  <%= turbo_frame_tag 'quotes' do %>
+    <%= render @quotes %>
+  <% end %>
 </main>

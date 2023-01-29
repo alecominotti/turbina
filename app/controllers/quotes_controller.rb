@@ -2,9 +2,10 @@
 
 class QuotesController < ApplicationController
   before_action :set_quote, only: %i[show edit update destroy]
+  # before_action { sleep 1 }
 
   def index
-    @quotes = Quote.all
+    @quotes = Quote.all.order(created_at: :desc)
   end
 
   def show; end

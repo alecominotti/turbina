@@ -1,9 +1,12 @@
-<main class="container">
-  <%= link_to sanitize("&larr; Back to quote"), quote_path(@quote) %>
+<main class='container'>
+  <%= link_to sanitize('&larr; Back to quote'), quote_path(@quote) %>
 
-  <div class="header">
+  <div class='header'>
     <h1>Edit quote</h1>
   </div>
 
-  <%= render "form", quote: @quote %>
+  <%#= "turbo_frame_tag @quote" es equivalente a "turbo_frame_tag dom_id(@quote)" %>
+  <%= turbo_frame_tag @quote do %>
+    <%= render 'form', quote: @quote %>
+  <% end %>
 </main>

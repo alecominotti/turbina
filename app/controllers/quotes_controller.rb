@@ -59,7 +59,7 @@ class QuotesController < ApplicationController
 
     # Una solución equivalente de este format.turbo_stream es:
     # ELIMINAR el archivo "views/quotes/destroy.turbo_stream.erb"
-    # y reemplazar la linea 54 por el siguiente código:
+    # y reemplazar la linea 57 por el siguiente código:
 
     # format.turbo_stream do
     #   flash.now[:notice] = 'Quote was successfully destroyed.'

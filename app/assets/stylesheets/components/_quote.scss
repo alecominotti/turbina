@@ -4,14 +4,20 @@
   align-items: center;
   gap: var(--space-s);
 
-  background-color: var(--color-white);
+  background-color: var(--color-dark);
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-small);
-  margin-bottom: var(--space-m);
+  margin-bottom: var(--space-l);
   padding: var(--space-xs);
+  font-weight: bold;
+  font-size: var(--font-size-l);
 
   @include media(tabletAndUp) {
-    padding: var(--space-xs) var(--space-m);
+    padding: var(--space-m);
+  }
+
+  a {
+    color: var(--color-white);
   }
 
   &__actions {

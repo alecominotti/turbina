@@ -1,6 +1,6 @@
 .btn {
   display: inline-block;
-  padding: var(--space-xxs) var(--space-m);
+  padding: 0 var(--space-xs);
   border-radius: var(--border-radius);
   background-origin: border-box; // Invisible borders with linear gradients
   background-color: transparent;
@@ -45,28 +45,41 @@
   }
 
   &--light {
-    color: var(--color-dark);
-    background-color: var(--color-light);
+    color: var(--color-white);
+    background-color: var(--color-tertiary);
 
     &:hover,
     &:focus,
     &:focus-within,
     &:active {
-      color: var(--color-dark);
+      color: var(--color-light);
       filter: brightness(92%);
     }
   }
 
   &--dark {
     color: var(--color-white);
-    border-color: var(--color-dark);
-    background-color: var(--color-dark);
+    border-color: var(--color-light);
+    background-color: var(--color-light);
 
     &:hover,
     &:focus,
     &:focus-within,
     &:active {
       color: var(--color-white);
+    }
+  }
+
+  &--danger {
+    color: var(--color-white);
+    background-color: var(--color-danger);
+
+    &:hover,
+    &:focus,
+    &:focus-within,
+    &:active {
+      color: var(--color-white);
+      filter: saturate(1.4) brightness(115%);
     }
   }
 }

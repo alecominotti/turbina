@@ -2,7 +2,6 @@
 
 class QuotesController < ApplicationController
   before_action :set_quote, only: %i[show edit update destroy]
-  # before_action { sleep 1 }
 
   # NOTA:
   # ¿Por qué los métodos create, update y destroy tienen dos 'format' adentro de un 'respond_to'?

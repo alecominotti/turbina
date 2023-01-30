@@ -1,7 +1,7 @@
 // Config
 @import 'config/_reset';
 @import 'config/_variables';
-@import "config/animations";
+@import 'config/animations';
 
 // Mixins
 @import 'mixins/_media';
@@ -12,9 +12,8 @@
 @import 'components/_form';
 @import 'components/_visually_hidden';
 @import 'components/_error_message';
-@import "components/turbo_progress_bar";
-@import "components/flash";
+@import 'components/flash';
 
 // Layouts
-@import "layouts/container";
-@import "layouts/header";
+@import 'layouts/container';
+@import 'layouts/header';

@@ -1,24 +1,7 @@
-# README
+# Turbo Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Aplicación de ejemplo para aprender Turbo Rails.
 
-Things you may want to cover:
+Es una version simplificada de la app que se construye en el [tutorial oficial de Turbo en Rails](https://www.hotrails.dev/turbo-rails)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Utiliza `Turbo frames`, `Turbo Streams` y actualizaciones en tiempo real con `Turbo` + `ActiveJob`

@@ -9,6 +9,7 @@ Es una versión simplificada de la app que se construye en el [tutorial oficial 
 - `git clone https://github.com/alecominotti/turbina.git`
 - `cd turbina`
 - `bundle install`
+- `npm install`
 - `docker run --rm --detach --name postgres --env POSTGRES_PASSWORD=root --publish 5432:5432 -v pgdata:/var/lib/postgresql/data postgres:13.3`
 - `rails db:create db:migrate`
 - `bin/dev`

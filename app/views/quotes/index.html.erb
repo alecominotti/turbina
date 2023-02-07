@@ -1,7 +1,9 @@
 <main class='container'>
   <div class='header'>
     <h1>Quotes</h1>
-    <%# El atributo data-turbo-frame le está indicando a dónde insertar el formulario de new Quote %>
+    <%# El atributo data-turbo-frame le está indicando a dónde buscar y dónde insertar el formulario de new Quote %>
+    <%# Al clickear este link, Turbo trae la vista del archivo "new.html.erb", busca el turbo frame con ID 'new_quote' y lo inserta
+    en el turbo frame de esta vista con ese mismo ID (que se encuentra en la linea 11) %>
     <%= link_to 'New quote', new_quote_path, data: { turbo_frame: dom_id(Quote.new) }, class: 'btn btn--primary' %>
   </div>
 
